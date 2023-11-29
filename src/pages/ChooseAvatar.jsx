@@ -21,7 +21,6 @@ export const ChooseAvatar = () => {
     setLoading(true);
 
     const updatedFormData = { ...formData, profile_picture: selectedAvatar };
-    console.log("ChooseAvatar form data: ", formData);
 
     setTimeout(async () => {
       try {

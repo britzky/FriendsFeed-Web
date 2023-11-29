@@ -36,7 +36,7 @@ export const FriendProvider = ({ children }) => {
         }
     }, [accessToken]);
 
-    const fetchFriends = useCallback(async (accessToken) => {
+    const fetchFriends = useCallback(async () => {
         try {
             const response = await fetch('https://colab-test.onrender.com/friends', {
                 method: 'GET',

@@ -6,13 +6,15 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export const Friend = () => {
   const { accessToken, setInRegistrationFlow, inRegistrationFlow} = useAuth();
-  const { fetchFriends, fetchFriendDetails, friends, setFriends, friend, setFriend } = useFriends();
+  const { fetchFriends, fetchFriendDetails, setFriends, friend, setFriend } = useFriends();
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (accessToken) {
       fetchFriends();
-  }, [fetchFriends]);
+    }
+  }, [fetchFriends, accessToken]);
 
   useEffect(() => {
     if (username) {
@@ -39,17 +41,19 @@ export const Friend = () => {
         </p>
         <Searchbar handleSearch={handleSearch} placeholder="Search @Username" />
         <h2>Your Friends will appear here</h2>
-        <div>
-          {friends.map((item) => (
-            <FriendCard
-              key={item.id}
-              username={item.username}
-              profile_picture={item.profile_picture}
-              following={item.following}
-              onFollowChange={() => setFriends(null)}
-            />
-          ))}
-        </div>
+        {friend && (
+          <div>
+            {friend.map((item) => (
+              <FriendCard
+                key={item.id}
+                username={item.username}
+                profile_picture={item.profile_picture}
+                following={item.following}
+                onFollowChange={() => setFriend(null)}
+              />
+            ))}
+          </div>
+        )}
         <FriendList />
         {inRegistrationFlow && (
           <div>
