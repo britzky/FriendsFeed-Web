@@ -1,0 +1,9 @@
+export { ChooseAvatar } from './ChooseAvatar';
+export { Friend } from './Friend';
+export { Home } from './Home';
+export { LandingPage } from './LandingPage';
+export { Login } from './Login';
+export { Register } from './Register';
+export { Restaurant } from './Restaurant';
+export { Review } from './Review';
+export { SearchRestaurant } from './SearchRestaurant';
