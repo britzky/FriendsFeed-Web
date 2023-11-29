@@ -13,7 +13,7 @@ export const AllRoutes = () => {
               <Route path="/search" element={<SearchRestaurant />} />
               <Route path="/restaurant/:id" element={<Restaurant />} />
               <Route path="/review/:id" element={<Review />} />
-              <Route path="/friend/:id" element={<Friend />} />
+              <Route path="/friend/" element={<Friend />} />
               <Route path="/avatar" element={<ChooseAvatar />} />
           </Routes>
       </div>

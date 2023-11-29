@@ -16,15 +16,16 @@ export const ChooseAvatar = () => {
   const handleCompleteRegistration = async () => {
     if (!selectedAvatar) {
       alert('Please select an avatar');
-      setLoading(false);
       return;
     }
     setLoading(true);
-      updateFormData({ ...formData, profile_picture: selectedAvatar });
+
+    const updatedFormData = { ...formData, profile_picture: selectedAvatar };
+    console.log("ChooseAvatar form data: ", formData);
 
     setTimeout(async () => {
       try {
-        await registerUser(formData);
+        await registerUser(updatedFormData);
         navigate('/friend');
       } catch (error) {
         console.error("Error completing registration:", error);
