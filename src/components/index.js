@@ -10,5 +10,8 @@ export { FriendCard } from './FriendCard';
 export { RestaurantCard } from './RestaurantCard';
 export { RestaurantList } from './RestaurantList';
 
+//reviews
+export { ReviewsCard } from './ReviewsCard';
+
 //misc
 export { Searchbar } from './Searchbar';
