@@ -33,13 +33,16 @@ export const Friend = () => {
 
 
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen">
+      <div className="flex flex-col items-center w-full max-w-md">
         <h1 className="text-5xl my-3 font-luckiest text-center text-darkGreen">Friends Feed</h1>
         <p>
           Add friends so you can start seeing reviews right away.
           This is what makes Friends Feed so great!
         </p>
-        <Searchbar handleSearch={handleSearch} placeholder="Search @Username" />
+        <div className="w-full">
+          <Searchbar handleSearch={handleSearch} placeholder="Search @Username" />
+        </div>
         <h2>Your Friends will appear here</h2>
         {friend && (
           <div>
@@ -66,6 +69,7 @@ export const Friend = () => {
           <Link to="/home">Skip for now</Link>
           </div>
         )}
+    </div>
     </div>
   )
 }
