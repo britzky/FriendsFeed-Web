@@ -8,9 +8,22 @@ export const useLocation = () => {
 
 export const LocationProvider = ({ children }) => {
     const [searchLocation, setSearchLocation] = useState("");
+    const [clearSearch, setClearSearch] = useState(false);
 
+    // clear the Searchbar
+    const clearSearchbar = () => {
+        setClearSearch(true);
+    };
+
+    const contextValue ={
+      searchLocation,
+      setSearchLocation,
+      clearSearch,
+      setClearSearch,
+      clearSearchbar,
+    }
     return (
-    <LocationContext.Provider value={{ searchLocation, setSearchLocation }}>
+    <LocationContext.Provider value={contextValue}>
         {children}
     </LocationContext.Provider>
   )

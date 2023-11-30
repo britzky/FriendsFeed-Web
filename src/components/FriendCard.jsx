@@ -12,6 +12,8 @@ export const FriendCard = ({ username, profile_picture, following, onFollowChang
     // check to see if the user is the current user so we can determine if we should show the follow button
     const isCurrentUser = userDetails && username === userDetails.username;
 
+    // handle the follow button press by either unfollowing or following the friend
+    // based on the current following state
     const handleButtonPress = () => {
         if (following) {
             unfollowFriend(username)

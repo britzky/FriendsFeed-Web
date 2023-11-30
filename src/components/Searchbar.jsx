@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaSearch } from 'react-icons/fa';
+import { useLocation } from '../context/LocationContext';
 
 export const Searchbar = ({ onSearch, placeholder }) => {
   const [input, setInput] = useState('');
+  const { clearSearch, setClearSearch } = useLocation();
+  useEffect(() => {
+    if (clearSearch) {
+      setInput('');
+      setClearSearch(false);
+    }
+    }, [clearSearch, setClearSearch])
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
     if (input.trim()) {
       onSearch(input.trim());
@@ -25,6 +33,8 @@ export const Searchbar = ({ onSearch, placeholder }) => {
       </div>
       <input
         type="text"
+        name="search"
+        id="search"
         placeholder={placeholder}
         value={input}
         onChange={(e) => setInput(e.target.value)}
