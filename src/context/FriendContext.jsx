@@ -10,7 +10,7 @@ export const useFriends = () => {
 
 export const FriendProvider = ({ children }) => {
     const [friends, setFriends] = useState([]); // used for friendlist
-    const [friend, setFriend] = useState([]); // used for friend details
+    const [friend, setFriend] = useState(null); // used for friend details
     const { accessToken } = useAuth();
 
     const fetchFriendDetails = useCallback(async (username) => {
@@ -29,7 +29,7 @@ export const FriendProvider = ({ children }) => {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                setFriend([data])
+                setFriend(data)
                 console.log("Fetched friend details: ", data)
         } catch (error) {
             console.error('There was a problem fetching friend details:', error);

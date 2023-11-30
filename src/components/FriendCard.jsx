@@ -18,12 +18,22 @@ export const FriendCard = ({ username, profile_picture, following, onFollowChang
     }
 
   return (
-    <div>
-        <img src={avatarImage} alt="user avatar" />
-        <p>{username}</p>
-            <button onClick={handleButtonPress}>
+        <div className="w-full flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+                <img
+                    src={avatarImage}
+                    alt="user avatar"
+                    className="w-12 h-12 rounded-full"
+                />
+                <p className="text-xl">@{username}</p>
+            </div>
+            <button
+                onClick={handleButtonPress}
+                className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen "
+            >
                 {following ? "Unfollow" : "Follow"}
             </button>
-    </div>
-  )
+        </div>
+      )
+
 }

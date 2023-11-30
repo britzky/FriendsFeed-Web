@@ -31,32 +31,32 @@ export const Friend = () => {
     navigate('/home');
   };
 
-
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="flex flex-col items-center w-full max-w-md">
-        <h1 className="text-5xl my-3 font-luckiest text-center text-darkGreen">Friends Feed</h1>
-        <p>
-          Add friends so you can start seeing reviews right away.
-          This is what makes Friends Feed so great!
-        </p>
+      <div className="flex flex-col items-center w-full max-w-md space-y-5">
+      {inRegistrationFlow && (
+          <>
+            <h1 className="text-5xl my-3 font-luckiest text-center text-darkGreen">Friends Feed</h1>
+            <p className="text-center">
+              Add friends so you can start seeing reviews right away.
+              This is what makes Friends Feed so great!
+            </p>
+          </>
+        )}
         <div className="w-full">
           <Searchbar handleSearch={handleSearch} placeholder="Search @Username" />
         </div>
-        <h2>Your Friends will appear here</h2>
-        {friend && (
-          <div>
-            {friend.map((item) => (
-              <FriendCard
-                key={item.id}
-                username={item.username}
-                profile_picture={item.profile_picture}
-                following={item.following}
-                onFollowChange={() => setFriend(null)}
-              />
-            ))}
-          </div>
-        )}
+        <h2 className="w-full">Your Friends will appear here.</h2>
+        {friend &&
+          <FriendCard
+            key={item.id}
+            username={item.username}
+            profile_picture={item.profile_picture}
+            following={item.following}
+            onFollowChange={() => setFriend(null)}
+            className="w-full"
+            />
+        }
         <FriendList />
         {inRegistrationFlow && (
           <div>
@@ -66,7 +66,9 @@ export const Friend = () => {
           >
             Continue
           </button>
-          <Link to="/home">Skip for now</Link>
+          <Link to="/home">
+            <p className="text-center font-bold mt-3">Skip for now</p>
+            </Link>
           </div>
         )}
     </div>

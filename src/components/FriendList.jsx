@@ -4,7 +4,7 @@ import { useFriends } from "../context/FriendContext"
 export const FriendList = () => {
   const { friends } = useFriends();
   return (
-    <div>
+    <div className="w-full">
       {friends.map((item) => (
         <FriendCard
           key={item.id}
