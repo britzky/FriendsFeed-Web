@@ -4,9 +4,13 @@ import { avatars } from "../assets/avatars"
 
 export const FriendCard = ({ username, profile_picture, following, onFollowChange}) => {
     const { followFriend, unfollowFriend } = useFriends();
+    const { userDetails } = useAuth();
 
     // get the avatar image based on the profile picture
     const avatarImage = avatars[profile_picture]
+
+    // check to see if the user is the current user so we can determine if we should show the follow button
+    const isCurrentUser = userDetails && username === userDetails.username;
 
     const handleButtonPress = () => {
         if (following) {
@@ -27,12 +31,14 @@ export const FriendCard = ({ username, profile_picture, following, onFollowChang
                 />
                 <p className="text-xl">@{username}</p>
             </div>
+            {!isCurrentUser && ( // only show the follow button if the user is not the current user
             <button
                 onClick={handleButtonPress}
                 className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen "
             >
                 {following ? "Unfollow" : "Follow"}
             </button>
+            )}
         </div>
       )
 

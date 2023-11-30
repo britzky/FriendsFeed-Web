@@ -66,9 +66,7 @@ export const Friend = () => {
           >
             Continue
           </button>
-          <Link to="/home">
-            <p className="text-center font-bold mt-3">Skip for now</p>
-            </Link>
+            <p className="text-center font-bold mt-3" onClick={navigateToHome}>Skip for now</p>
           </div>
         )}
     </div>
