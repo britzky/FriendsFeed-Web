@@ -9,7 +9,7 @@ export const AllRoutes = () => {
   return (
     <Router>
       {isLoggedIn && !inRegistrationFlow && <Navbar />}
-      <div className={`${isLoggedIn && !inRegistrationFlow ? 'pt-10' : ''}`}>
+      <div className={`${isLoggedIn && !inRegistrationFlow ? 'pt-12' : ''}`}>
         <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />

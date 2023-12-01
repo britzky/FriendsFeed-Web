@@ -5,7 +5,6 @@ import { useFriends } from '../context/FriendContext';
 import { useReview } from '../context/ReviewContext';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 
 export const RestaurantList = () => {
   const { avatars, fetchAvatars, reviews } = useReview();
