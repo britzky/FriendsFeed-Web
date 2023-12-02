@@ -78,7 +78,7 @@ export const Home = () => {
         <RatingsDropdown />
         <CuisineFilter onSelectCuisine={handleCuisineFilter} />
       </div>
-      <div>
+      <div className="overflow-auto">
         <RestaurantList />
       </div>
       <button

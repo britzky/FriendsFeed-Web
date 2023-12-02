@@ -1,15 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaHome,  } from 'react-icons/fa'
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { IoRestaurantOutline } from "react-icons/io5";
+import { PiHouseLineLight } from "react-icons/pi";
+
+
 
 export const Navbar = () => {
   return  (
     <header className="z-50 bg-white fixed top-0 w-full shadow-md">
-        <nav class="container mx-auto px-6 py-3">
-            <div class="flex justify-center items-center">
-                <div class="flex gap-24">
-                    <Link to="/home">Home</Link>
-                    <Link to="/friend">Friend</Link>
-                    <Link to="/search">Search Restaurant</Link>
+        <nav className="container mx-auto px-6 py-3">
+            <div className="flex justify-center items-center">
+                <div className="flex gap-24">
+                    <Link to="/home"><PiHouseLineLight  className="text-3xl" /></Link>
+                    <Link to="/friend"><AiOutlineUsergroupAdd className="text-3xl" /></Link>
+                    <Link to="/search"><IoRestaurantOutline  className="text-3xl" /></Link>
                 </div>
             </div>
         </nav>

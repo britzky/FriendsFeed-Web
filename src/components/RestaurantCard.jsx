@@ -6,7 +6,7 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
 
   return (
     <div onClick={onClick}>
-      {image && <img src={image} alt={name} className="w-full h-48 object-cover" />}
+      {image && <img src={image} alt={name} className="w-full h-48 object-cover rounded-lg" />}
       {friendAvatars && (
         <div className="flex">
           {friendAvatars.map((avatar, index) => (
@@ -21,6 +21,7 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
       )}
       <h3 className="text-bold text-xl">{name}</h3>
       {rating && (
+        <div className="my-2">
         <StarRatings
           rating={parseFloat(rating)}
           starRatedColor="black"
@@ -28,10 +29,12 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
           starDimension='20px'
           starEmptyColor='lightgray'
         />
+        </div>
       )}
       {cuisine && <p>{cuisine}</p>}
       {address && <p>{address}</p>}
-      <button onClick={onReviewClick}>Write a Review</button>
+      <button onClick={onReviewClick} className="px-4 py-2 text-center w-full bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10">Write a Review</button>
+      <div className="border-b border-gray-400 w-full my-7"></div>
     </div>
   )
 }

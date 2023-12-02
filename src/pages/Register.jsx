@@ -53,6 +53,7 @@ export const Register = () => {
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-96"
             type="text"
             name="username"
+            id="username"
             placeholder="Username"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
@@ -62,6 +63,7 @@ export const Register = () => {
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-96"
             type="password"
             name="password"
+            id="password"
             placeholder="Password"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
@@ -71,6 +73,7 @@ export const Register = () => {
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-96"
             type="email"
             name="email"
+            id="email"
             placeholder="Email"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
@@ -79,6 +82,7 @@ export const Register = () => {
             type="text"
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-96"
             name="location"
+            id="location"
             placeholder="Location"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
