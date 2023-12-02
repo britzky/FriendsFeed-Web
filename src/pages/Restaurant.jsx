@@ -27,7 +27,7 @@ export const Restaurant = () => {
   return (
     <div>
         {restaurant && (
-        <div>
+        <div key={id}>
           <RestaurantCard
             name={restaurant.name}
             image={restaurant.image_url}
