@@ -68,12 +68,14 @@ export const Home = () => {
 
   return (
     <div className="flex justify-center h-screen mt-14">
-      <div className="flex flex-col max-w-md">
-      <Searchbar
-        placeholder="Search Location (ex. Brooklyn, NY)"
-        onSearch={handleSearch}
-        className="w-full"
-      />
+      <div className="flex flex-col">
+        <div>
+          <Searchbar
+            placeholder="Search Location (ex. Brooklyn, NY)"
+            onSearch={handleSearch}
+            className="w-full"
+          />
+        </div>
       <div className="my-7 space-x-5">
         <RatingsDropdown />
         <CuisineFilter onSelectCuisine={handleCuisineFilter} />
@@ -81,12 +83,6 @@ export const Home = () => {
       <div className="overflow-auto">
         <RestaurantList />
       </div>
-      <button
-        className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10 w-96"
-        onClick={handleLogout}
-      >
-        Logout
-      </button>
       </div>
     </div>
   )

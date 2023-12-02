@@ -25,22 +25,24 @@ export const Restaurant = () => {
 
   console.log('This is the restaurant: ', restaurant)
   return (
-    <div>
-        {restaurant && (
-        <div key={id}>
-          <RestaurantCard
-            name={restaurant.name}
-            image={restaurant.image_url}
-            cuisine={restaurant.categories.map((category) => category.title).join(', ')}
-            rating={restaurant.friend_ratings}
-            address={restaurant.location.display_address.join(', ')}
-            onReviewClick={restaurant && (() => navigate(`/review/${restaurant.id}`))}
-            friendAvatars={avatars[restaurant.id]}
-          />
-        </div>
-          )}
+    <div className="flex justify-center my-14 mx-7">
       <div>
-        <ReviewsCard restaurantId={id} />
+          {restaurant && (
+          <div key={id}>
+            <RestaurantCard
+              name={restaurant.name}
+              image={restaurant.image_url}
+              cuisine={restaurant.categories.map((category) => category.title).join(', ')}
+              rating={restaurant.friend_ratings}
+              address={restaurant.location.display_address.join(', ')}
+              onReviewClick={restaurant && (() => navigate(`/review/${restaurant.id}`))}
+              friendAvatars={avatars[restaurant.id]}
+            />
+          </div>
+            )}
+        <div>
+          <ReviewsCard restaurantId={id} />
+        </div>
       </div>
     </div>
   )
