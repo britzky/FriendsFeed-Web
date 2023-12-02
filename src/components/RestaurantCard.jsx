@@ -22,12 +22,11 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
       <h3 className="text-bold text-xl">{name}</h3>
       {rating && (
         <StarRatings
-          rating={rating}
+          rating={parseFloat(rating)}
           starRatedColor="black"
           starSpacing='1px'
-          numberOfStars={5}
           starDimension='20px'
-          starEmptyColor='black'
+          starEmptyColor='lightgray'
         />
       )}
       {cuisine && <p>{cuisine}</p>}

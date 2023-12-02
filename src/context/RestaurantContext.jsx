@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react'
+import React, { useState, useContext, createContext, useCallback } from 'react'
 import { useAuth } from './AuthContext'
 
 const RestaurantContext = createContext()
@@ -14,7 +14,8 @@ export const RestaurantProvider = ({ children }) => {
     const [updateRestaurants, setUpdateRestaurants] = useState(false); // Added this state to update the restaurants list after a review is posted
     const { accessToken } = useAuth();
 
-    const fetchFriendReviewedRestaurants = async (location) => {
+    const fetchFriendReviewedRestaurants = useCallback(async (location) => {
+        console.log('Attempting to Fetch restaurants for location: ', location)
         try {
             setLoading(true);
             setRestaurants([]);
@@ -38,9 +39,10 @@ export const RestaurantProvider = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    }
+    }, [accessToken]);
 
     const fetchRestaurantsByCuisine = async (location, cuisine) => {
+        console.log('Attempting to Fetch restaurants with specific cuisine for location: ', location, cuisine)
         try {
             setLoading(true);
             setRestaurants([]);
@@ -68,6 +70,7 @@ export const RestaurantProvider = ({ children }) => {
 
     // function to pass selected rating to the ratings dropdown
     const fetchRestaurantsByFriendRating = async (rating) => {
+        console.log('Attempting to Fetch restaurants with specific rating: ', rating)
         try {
             setLoading(true);
             setRestaurants([]);
@@ -93,6 +96,7 @@ export const RestaurantProvider = ({ children }) => {
     }
 
     const refreshRestaurants = () => {
+        console.log('Refreshing restaurants');
         setUpdateRestaurants(prev => !prev);
     }
 

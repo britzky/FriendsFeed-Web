@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { FaChevronDown, FaTimes } from 'react-icons/fa';
 
 
-export const CuisineFilter = ({ onApplyFilter, onClose }) => {
+export const CuisineFilter = ({ onSelectCuisine }) => {
   const [input, setInput] = useState('');
   const [cuisines, setCuisines] = useState([]);
   const [filteredCuisines, setFilteredCuisines] = useState([]);
@@ -14,6 +14,7 @@ export const CuisineFilter = ({ onApplyFilter, onClose }) => {
   const { accessToken } = useAuth();
 
   useEffect(() => {
+    if (accessToken) {
     const fetchCuisines = async () => {
       setLoading(true);
       try {
@@ -32,6 +33,7 @@ export const CuisineFilter = ({ onApplyFilter, onClose }) => {
       }
     }
     fetchCuisines();
+  }
   }, [accessToken]);
 
   const handleInputChange = (text) => {
@@ -41,7 +43,7 @@ export const CuisineFilter = ({ onApplyFilter, onClose }) => {
   }
 
   const handleSelectCuisine = (cuisine) => {
-    onApplyFilter(cuisine.yelp_alias);
+    onSelectCuisine(cuisine.yelp_alias);
     onClose();
   }
 
@@ -51,7 +53,7 @@ export const CuisineFilter = ({ onApplyFilter, onClose }) => {
   return (
     <>
       <button
-        className="text-black bg-white hover:bg-gray-200 border-2 border-secondaryGreen focus:outline-none focus:ring-primaryGreen font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+        className="text-black bg-white hover:bg-gray-100 border-2 border-secondaryGreen focus:outline-none focus:ring-primaryGreen font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
         onClick={toggleModal}
       >
         Cuisines

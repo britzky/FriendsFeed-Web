@@ -23,7 +23,7 @@ export const RestaurantList = () => {
 
   return (
     <div>
-      {restaurants.map((restaurant) => (
+      {restaurants && restaurants.map((restaurant) => (
         <RestaurantCard
           key={restaurant.id}
           name={restaurant.name}
