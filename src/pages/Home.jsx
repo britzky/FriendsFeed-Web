@@ -74,7 +74,7 @@ export const Home = () => {
         onSearch={handleSearch}
         className="w-full"
       />
-      <div className="mt-3 space-x-5">
+      <div className="my-7 space-x-5">
         <RatingsDropdown />
         <CuisineFilter onSelectCuisine={handleCuisineFilter} />
       </div>

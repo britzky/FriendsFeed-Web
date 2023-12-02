@@ -15,7 +15,6 @@ export const RestaurantProvider = ({ children }) => {
     const { accessToken } = useAuth();
 
     const fetchFriendReviewedRestaurants = useCallback(async (location) => {
-        console.log('Attempting to Fetch restaurants for location: ', location)
         try {
             setLoading(true);
             setRestaurants([]);
