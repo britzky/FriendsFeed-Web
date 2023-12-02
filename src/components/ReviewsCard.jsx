@@ -3,14 +3,14 @@ import { avatars } from '../assets/avatars'
 import { useReview } from '../context/ReviewContext'
 import StarRatings from 'react-star-ratings'
 
-export const ReviewsCard = () => {
+export const ReviewsCard = ({ restaurantId }) => {
   const { reviews } = useReview();
   const restaurantReviews = reviews[restaurantId]
 
   if (!restaurantReviews || restaurantReviews.length === 0) {
     return <p>No reviews available</p>;
   }
-  
+
   return (
     <div>
       {restaurantReviews && restaurantReviews.map((review) => (

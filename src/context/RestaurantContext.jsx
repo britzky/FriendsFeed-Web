@@ -8,7 +8,8 @@ export const useRestaurant = () => {
 }
 
 export const RestaurantProvider = ({ children }) => {
-    const [restaurants, setRestaurants] = useState([]);
+    const [restaurants, setRestaurants] = useState([]); // for storing the list of restaurants
+    const [restaurant, setRestaurant] = useState(null); // for storing the individual restaurant details
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [updateRestaurants, setUpdateRestaurants] = useState(false); // Added this state to update the restaurants list after a review is posted
@@ -94,6 +95,32 @@ export const RestaurantProvider = ({ children }) => {
         }
     }
 
+    const fetchRestaurantById = useCallback(async (restaurantId) => {
+        try {
+            setLoading(true);
+            const response = await fetch(`https://colab-test.onrender.com/restaurants/${restaurantId}`, {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': "application/json",
+                }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setRestaurant(data);
+                console.log('Restaurant details: ', data);
+            } else {
+                const errorText = await response.text();
+                setError(new Error(`Failed to fetch data: ${errorText}`));
+            }
+        } catch (err) {
+            setError(err);
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    }, [accessToken]);
+
     const refreshRestaurants = () => {
         console.log('Refreshing restaurants');
         setUpdateRestaurants(prev => !prev);
@@ -101,11 +128,13 @@ export const RestaurantProvider = ({ children }) => {
 
     const contextValue = {
         restaurants,
+        restaurant,
         loading,
         error,
         fetchFriendReviewedRestaurants,
         fetchRestaurantsByCuisine,
         fetchRestaurantsByFriendRating,
+        fetchRestaurantById,
         refreshRestaurants,
         updateRestaurants
     };
