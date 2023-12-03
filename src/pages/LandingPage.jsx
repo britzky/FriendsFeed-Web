@@ -1,5 +1,5 @@
 import React from 'react'
-import backgroundImage from '../assets/landing_page.jpeg'
+import backgroundImage from '../assets/Landing_Page.jpeg'
 import { Link } from 'react-router-dom'
 
 export const LandingPage = () => {

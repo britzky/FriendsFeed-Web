@@ -3,13 +3,15 @@ import { useParams, useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { useReview } from '../context/ReviewContext';
 import { useRestaurant } from '../context/RestaurantContext';
+import { useLocation } from 'react-router';
 import StarRatings from 'react-star-ratings';
 
 export const Review = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const { postReview, reviewPosted, resetReviewPosted } = useReview();
-  const { refreshRestaurants, fetchRestaurantById, restaurant } = useRestaurant();
+  const { fetchFriendReviewedRestaurants, fetchRestaurantById, restaurant } = useRestaurant();
+  const { searchLocation } = useLocation();
   const { accessToken } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -22,7 +24,8 @@ export const Review = () => {
   //post review when submit button is clicked
   const handleSubmit = async () => {
     await postReview(id, rating, comment, accessToken);
-    refreshRestaurants();
+    await fetchFriendReviewedRestaurants(searchLocation);
+    navigate('/home');
   }
 
   // fetch individual restaurant when id changes
@@ -30,18 +33,10 @@ export const Review = () => {
     fetchRestaurantById(id);
   }, [id])
 
-  // navigate to home page when review is posted
-  useEffect(() => {
-    if (reviewPosted) {
-      resetReviewPosted();
-      navigate('/home');
-    }
-  }, [reviewPosted]);
-
   if (!restaurant) {
     return <p>Loading...</p>;
   }
-  
+
   return (
     <div className="flex h-screen w-full justify-center items-center">
       <div className="mx-4 md:mx-0">
@@ -68,7 +63,7 @@ export const Review = () => {
           />
 
           <button
-            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="px-4 py-2 text-center w-full bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen"
             onClick={handleSubmit}
             >
             Post Review
