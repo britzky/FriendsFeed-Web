@@ -64,6 +64,7 @@ export const AuthProvider = ({ children }) => {
             const isReady = await checkServerReadiness();
             if (isReady) {
                 await checkLoginInfo();
+                setLoading(false);
                 return;
             } else {
                 attempts++;

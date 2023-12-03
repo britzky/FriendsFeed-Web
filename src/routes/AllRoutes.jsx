@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ChooseAvatar, Friend, Home, LandingPage, Login, Register, Restaurant, Review, SearchRestaurant } from '../pages';
 import { Navbar } from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
+import { NavigationHandler } from './NavigationHandler';
 
 export const AllRoutes = () => {
   const { isLoggedIn, inRegistrationFlow } = useAuth();
 
   return (
     <Router>
+      <NavigationHandler />
       {isLoggedIn && !inRegistrationFlow && <Navbar />}
       <div className={`${isLoggedIn && !inRegistrationFlow ? 'pt-12' : ''}`}>
         <Routes>
