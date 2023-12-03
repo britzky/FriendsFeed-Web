@@ -32,7 +32,7 @@ export const RestaurantList = () => {
           rating={restaurant.friend_ratings}
           friendAvatars={avatars[restaurant.id]}
           onClick={() => navigate(`/restaurant/${restaurant.id}`)}
-          onReviewClick={() => navigate(`/review/${restaurant.id}`)}
+          onReviewClick={restaurant && (() => navigate(`/review/${restaurant.id}`))}
         />
       ))
         }
