@@ -44,7 +44,7 @@ export const Friend = () => {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex justify-center h-screen mt-28 mx-4 md:mx-0">
       <div className="flex flex-col items-center w-full max-w-md space-y-5">
       {inRegistrationFlow && ( // only show the header if we are in the registration flow
           <>
@@ -71,9 +71,9 @@ export const Friend = () => {
         <h2 className="w-full">Your Friends will appear here.</h2>
         <FriendList />
         {inRegistrationFlow && ( // only show the continue button and skip now if we are in the registration flow
-          <div>
+          <div className=" md:mx-0 mx-4 w-full">
             <button
-            className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10 w-96"
+            className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10 w-full"
             onClick={navigateToHome}
           >
             Continue
