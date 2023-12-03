@@ -12,7 +12,7 @@ export const ReviewsCard = ({ restaurantId }) => {
   }
 
   return (
-    <div>
+    <div className="w-full">
       {restaurantReviews && restaurantReviews.map((review) => (
         <div key={review.id}>
           <img src={avatars[review.profile_picture]} alt={review.profile_picture} className="w-12 h-12 rounded-full object-cover" />

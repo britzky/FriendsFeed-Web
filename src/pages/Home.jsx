@@ -67,8 +67,8 @@ export const Home = () => {
   }
 
   return (
-    <div className="flex justify-center h-screen mt-14">
-      <div className="flex flex-col">
+    <div className="flex justify-center min-h-screen w-full mt-14">
+      <div className="flex flex-col w-full px-4 md:max-w-lg mx-auto">
         <div>
           <Searchbar
             placeholder="Search Location (ex. Brooklyn, NY)"

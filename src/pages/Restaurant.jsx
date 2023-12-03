@@ -25,10 +25,10 @@ export const Restaurant = () => {
 
   console.log('This is the restaurant: ', restaurant)
   return (
-    <div className="flex justify-center my-14 mx-7">
-      <div>
+    <div className="flex justify-center min-h-screen w-full">
+      <div className="flex flex-col justify-center w-full px-4 md:max-w-lg mx-auto">
           {restaurant && (
-          <div key={id}>
+          <div key={id} className="w-full">
             <RestaurantCard
               name={restaurant.name}
               image={restaurant.image_url}
