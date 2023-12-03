@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
             }
         };
         await attemptFetch();
-    }, [refreshToken])
+    }, [])
 
     const checkLoginInfo = useCallback(async () => {
         try{
@@ -102,7 +102,7 @@ export const AuthProvider = ({ children }) => {
             setLoading(false);
         }
 
-    }, [refreshToken])
+    }, [])
 
 
     const registerUser = async (formData) => {
@@ -179,14 +179,11 @@ export const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        checkLoginStatus()
-    }, []);
-
-    useEffect(() => {
-        console.log('Access Token Updated:', accessToken)
-        console.log('User Details Updated:', userDetails)
-    }, [accessToken, userDetails])
-
+        checkLoginStatus().catch(error => {
+            console.error("Error in checkLoginStatus: ", error);
+            setLoading(false); // Ensure loading is set to false even if there's an error
+        });
+    }, [checkLoginStatus]);
 
     const contextValue = {
         isLoggedIn,
