@@ -44,7 +44,7 @@ export const Home = () => {
   //fetch restaurants when rating is set
   useEffect(() => {
     if (rating) {
-      fetchRestaurantsByFriendRating(selectedRating);
+      fetchRestaurantsByFriendRating(rating);
     }
   }, [rating]);
 
@@ -63,6 +63,7 @@ export const Home = () => {
   };
 
   const handleRatingSelection = (selectedRating) => {
+    console.log('selected rating: ', selectedRating);
     setRating(selectedRating)
   }
 
@@ -77,7 +78,7 @@ export const Home = () => {
           />
         </div>
       <div className="my-7 space-x-5">
-        <RatingsDropdown />
+        <RatingsDropdown onRatingSelect={handleRatingSelection} />
         <CuisineFilter onSelectCuisine={handleCuisineFilter} />
       </div>
       <div className="overflow-auto">

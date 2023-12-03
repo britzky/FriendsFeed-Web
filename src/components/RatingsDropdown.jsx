@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 import { FaChevronDown } from 'react-icons/fa'
 
-export const RatingsDropdown = () => {
+export const RatingsDropdown = ({ onRatingSelect }) => {
   const [open, setOpen] = useState(false)
 
   const toggleDropdown = () => {

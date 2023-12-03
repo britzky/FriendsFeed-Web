@@ -25,7 +25,7 @@ export const Restaurant = () => {
 
   console.log('This is the restaurant: ', restaurant)
   return (
-    <div className="flex justify-center min-h-screen w-full">
+    <div className="flex justify-center min-h-screen w-full my-14">
       <div className="flex flex-col justify-center w-full px-4 md:max-w-lg mx-auto">
           {restaurant && (
           <div key={id} className="w-full">
