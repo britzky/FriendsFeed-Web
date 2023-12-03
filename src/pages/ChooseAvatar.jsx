@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { avatars } from '../assets/avatars';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { CiLock } from "react-icons/ci";
 
 export const ChooseAvatar = () => {
   const { formData, updateFormData, registerUser, setUserDetails, setAccessToken } = useAuth();
@@ -72,7 +73,37 @@ export const ChooseAvatar = () => {
             Copy Invite Link
           </button>
         </div>
-        <div>
+        <div className="w-full flex justify-center items-center gap-5">
+          <div className="relative">
+              <img
+                src={avatars['Coffee']}
+                alt={'Coffee avatar'}
+                className="h-16 w-16 rounded-full cursor-pointer blur"
+                />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <CiLock className="h-10 w-10 rounded-full cursor-pointer" />
+            </div>
+          </div>
+            <div className="relative">
+              <img
+                src={avatars['Cupcake']}
+                alt={'Cupcake avatar'}
+                className="h-16 w-16 rounded-full cursor-pointer blur"
+              />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <CiLock className="h-10 w-10 rounded-full cursor-pointer" />
+            </div>
+            </div>
+            <div className="relative">
+              <img
+                src={avatars['Hamburger']}
+                alt={'Hamburger avatar'}
+                className="h-16 w-16 rounded-full cursor-pointer blur"
+              />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <CiLock className="h-10 w-10 rounded-full cursor-pointer" />
+            </div>
+          </div>
         </div>
         <button
             className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10 w-80"

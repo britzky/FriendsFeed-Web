@@ -137,7 +137,12 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    const loginUser = async (credentials) => {
+    const loginUser = async (username, password) => {
+        const credentials = {
+            username: username,
+            password: password
+        }
+        console.log('Logging in user with credentials:', credentials); // Add this for debugging
         setLoading(true);
         try {
             const response = await fetch("https://colab-test.onrender.com/signin", {

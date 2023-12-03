@@ -12,8 +12,8 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
 
         </div>
           <h3 className="text-bold text-xl">{name}</h3>
-        <div className="flex items-center w-full">
         {friendAvatars && (
+        <div className="flex items-center w-full">
           <div className="flex -space-x-5">
             {friendAvatars.slice(0, 5).map((avatar, index) => (
               <img
@@ -24,9 +24,9 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
               />
             ))}
           </div>
-        )}
           <p className="ml-3 italic">Friends overall rating</p>
         </div>
+        )}
         {rating && (
           <div className="my-2">
           <StarRatings

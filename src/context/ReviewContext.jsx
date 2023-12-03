@@ -64,7 +64,7 @@ export const ReviewProvider = ({ children }) => {
                     const data = await response.json();
                     setAvatars(prevAvatars => ({
                         ...prevAvatars,
-                        [restaurantId]: [...(prevAvatars[restaurantId] || []), ...data]
+                        [restaurantId]: data // Replace existing avatars with new data
                     }));
                     setFetchedRestaurants(prev => new Set(prev.add(restaurantId)));
                 } else {
@@ -97,6 +97,9 @@ export const ReviewProvider = ({ children }) => {
                 console.log("This is the review being sent to the backend", result);
                 if (response.ok) {
                     setReviewPosted(true);
+                    setFetchedRestaurants(prev => new Set([...prev].filter(id => id !== restaurantId)));
+                    // trigger re-fetch of avatars
+                    fetchAvatars(restaurantId, accessToken);
                 }
             } catch (error) {
                 console.error("Error posting review", error);

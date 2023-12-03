@@ -9,7 +9,7 @@ import StarRatings from 'react-star-ratings';
 export const Review = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
-  const { postReview, reviewPosted, resetReviewPosted } = useReview();
+  const { postReview, fetchAvatars } = useReview();
   const { fetchFriendReviewedRestaurants, fetchRestaurantById, restaurant } = useRestaurant();
   const { searchLocation } = useLocation();
   const { accessToken } = useAuth();
@@ -25,6 +25,7 @@ export const Review = () => {
   const handleSubmit = async () => {
     await postReview(id, rating, comment, accessToken);
     await fetchFriendReviewedRestaurants(searchLocation);
+    await fetchAvatars(id, accessToken);
     navigate('/home');
   }
 
