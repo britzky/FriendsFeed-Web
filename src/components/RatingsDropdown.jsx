@@ -17,6 +17,18 @@ export const RatingsDropdown = ({ onRatingSelect }) => {
     ));
   }
 
+  //function to reset the filter
+  const handleRatingSelect = (rating) => {
+    onRatingSelect(rating)
+    toggleDropdown()
+  }
+
+  //function to reset the filter
+  const resetFilter = () => {
+    onRatingSelect(null)
+    toggleDropdown()
+  }
+
   return (
     <div className="relative inline-block text-left">
       <button
@@ -37,11 +49,17 @@ export const RatingsDropdown = ({ onRatingSelect }) => {
               <li
                 key={rating}
                 className="flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                onClick={() => onRatingSelect(rating)}
+                onClick={() => handleRatingSelect(rating)}
               >
                 {renderStars(rating)}
               </li>
             ))}
+            <li
+              className="flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white font-bold"
+              onClick={() => resetFilter()}
+            >
+              Reset Filter
+            </li>
           </ul>
       </div>
       )}

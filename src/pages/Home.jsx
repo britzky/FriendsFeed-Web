@@ -59,7 +59,9 @@ export const Home = () => {
   };
 
   const handleRatingSelection = (selectedRating) => {
-    console.log('selected rating: ', selectedRating);
+    if (selectedRating === null) {
+      fetchFriendReviewedRestaurants(searchLocation);
+    }
     setRating(selectedRating)
   }
 
