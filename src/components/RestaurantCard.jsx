@@ -8,19 +8,25 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
     <div>
       <div onClick={onClick}>
         {image && <img src={image} alt={name} className="w-full h-48 object-cover rounded-lg" />}
+        <div>
+
+        </div>
+          <h3 className="text-bold text-xl">{name}</h3>
+        <div className="flex items-center w-full">
         {friendAvatars && (
-          <div className="flex">
-            {friendAvatars.map((avatar, index) => (
+          <div className="flex -space-x-5">
+            {friendAvatars.slice(0, 5).map((avatar, index) => (
               <img
                 key={index}
                 src={avatars[avatar]}
                 alt={avatar}
-                className="w-12 h-12 rounded-full object-cover"
+                className="w-10 h-10 rounded-full object-cover"
               />
             ))}
           </div>
         )}
-        <h3 className="text-bold text-xl">{name}</h3>
+          <p className="ml-3 italic">Friends overall rating</p>
+        </div>
         {rating && (
           <div className="my-2">
           <StarRatings
