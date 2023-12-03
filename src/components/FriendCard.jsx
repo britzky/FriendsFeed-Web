@@ -2,7 +2,7 @@ import { useFriends } from "../context/FriendContext"
 import { useAuth } from "../context/AuthContext"
 import { avatars } from "../assets/avatars"
 
-export const FriendCard = ({ username, profile_picture, following, onFollowChange}) => {
+export const FriendCard = ({ username, profile_picture, following, onFollowChange }) => {
     const { followFriend, unfollowFriend } = useFriends();
     const { userDetails } = useAuth();
 

@@ -5,10 +5,12 @@ import { FaChevronDown } from 'react-icons/fa'
 export const RatingsDropdown = ({ onRatingSelect }) => {
   const [open, setOpen] = useState(false)
 
+  // function to toggle the dropdown
   const toggleDropdown = () => {
     setOpen(!open)
   }
 
+  // function to render the stars
   const renderStars = (rating) => {
     return Array.from({ length: rating }, (_, index) => (
       <FaStar key={index} className="text-black m-0.5" />

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
-import { useLocation } from '../context/LocationContext';
 import { FaChevronDown, FaTimes } from 'react-icons/fa';
 
 
@@ -14,7 +13,9 @@ export const CuisineFilter = ({ onSelectCuisine }) => {
   const [showModal, setShowModal] = useState(false);
   const { accessToken } = useAuth();
 
+  // fetch the cuisines on mount and when the access token changes
   useEffect(() => {
+    // check if the access token exists
     if (accessToken) {
     const fetchCuisines = async () => {
       setLoading(true);
@@ -37,21 +38,26 @@ export const CuisineFilter = ({ onSelectCuisine }) => {
   }
   }, [accessToken]);
 
+  // filter the cuisines based on the input
   const handleInputChange = (text) => {
     setInput(text);
+    // match the cuisines that start with the input text
     const matchedCuisines = cuisines.filter(cuisine => cuisine.name.toLowerCase().startsWith(text.toLowerCase()));
     setFilteredCuisines(matchedCuisines);
   }
 
+  // function to handle selecting a cuisine
   const handleSelectCuisine = (cuisine) => {
     onSelectCuisine(cuisine.yelp_alias);
     setInput('');
     toggleModal();
   }
 
+  // function to toggle the modal
   const toggleModal = () => {
     setShowModal(!showModal);
   }
+
   return (
     <>
       <button

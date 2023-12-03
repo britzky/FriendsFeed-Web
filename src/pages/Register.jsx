@@ -15,7 +15,6 @@ export const Register = () => {
 
   const handleRegistration = () => {
     // Perform validation here and set errors if necessary
-    console.log("Current form data", formData)
     const validationErrors = {};
     if (!formData.username) {
       validationErrors.username = "username is required";
@@ -40,11 +39,11 @@ export const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="flex flex-col items-center w-full max-w-md">
-        <h1 className="text-5xl my-3 font-luckiest text-center text-darkGreen">Friends Feed</h1>
-        <h2 className="text-xl my-2 text-center">Discover new restaurants one friend at a time.</h2>
-        <div className="flex flex-col items-center">
+    <div className="flex justify-center min-h-screen w-full my-14">
+      <div className="flex flex-col justify-center w-full px-4 md:max-w-lg">
+        <div className="flex flex-col items-center mx-auto">
+          <h1 className="text-5xl font-luckiest text-center text-darkGreen">Friends Feed</h1>
+          <h2 className="text-xl my-2 text-center">Discover new restaurants one friend at a time.</h2>
           <input
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-96"
             type="text"
@@ -53,7 +52,7 @@ export const Register = () => {
             placeholder="Username"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
-          <p>This is how you'll appear to your friends on Friends Feed.</p>
+          <p className="m-2">This is how you'll appear to your friends on Friends Feed.</p>
           {error && error.username && <p className="text-red-500">{error.username}</p>}
           <input
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-96"
@@ -63,7 +62,7 @@ export const Register = () => {
             placeholder="Password"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
-          <p>Password must include: 6 to 20 characters</p>
+          <p className="m-2">Password must include: 6 to 20 characters</p>
           {error && error.password && <p className="text-red-500">{error.password}</p>}
           <input
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-96"

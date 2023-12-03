@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext'
 
 export const LandingPage = () => {
   const { setInRegistrationFlow } = useAuth();
+
   return (
     <div className="relative w-full h-screen bg-no-repeat bg-cover" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white/50"></div>

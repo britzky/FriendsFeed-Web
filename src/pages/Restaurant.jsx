@@ -12,6 +12,7 @@ export const Restaurant = () => {
   const { fetchRestaurantById, restaurant } = useRestaurant();
   const { fetchReviews, fetchAvatars, avatars } = useReview();
   const navigate = useNavigate();
+
   // fetch reviews and avatars when accessToken changes
   useEffect(() => {
     fetchReviews(id, accessToken);
@@ -23,7 +24,6 @@ export const Restaurant = () => {
     fetchRestaurantById(id);
   }, [id]);
 
-  console.log('This is the restaurant: ', restaurant)
   return (
     <div className="flex justify-center min-h-screen w-full my-14">
       <div className="flex flex-col justify-center w-full px-4 md:max-w-lg mx-auto">

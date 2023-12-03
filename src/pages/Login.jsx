@@ -9,21 +9,21 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
+  // set local state when the user types in the input fields
   const handleChange = (event, type) => {
     const value = event.target.value;
     if (type === 'username') setUsername(value);
     if (type === 'password') setPassword(value);
   }
 
+  // handle login form submission
   const handleSubmit = async (event) => {
-    console.log("Login form submitted")
     event.preventDefault();
     setError(null);
     if (!username || !password) {
       setError('Please enter username and password');
       return;
     }
-
     try {
       await loginUser(username, password);
       setInRegistrationFlow(false);
@@ -32,6 +32,7 @@ export const Login = () => {
       setError("Failed to login. Please check your credentials");
     }
   }
+  
   return (
     <div className="flex justify-center h-screen w-full mt-14">
       <div className="flex-col justify-center items-center max-w-md">

@@ -11,9 +11,13 @@ export const SearchRestaurant = () => {
   const { searchLocation } = useLocation();
   const navigate = useNavigate();
 
+  // fetch restaurants when searchedRestaurant is set
   useEffect(() => {
+    //function to fetch restaurants
     const fetchRestaurants = async () => {
+    // check if the searched restaurant is not empty
     if (searchedRestaurant.trim()) {
+      // attempt to fetch restaurants
       try {
         const response = await fetch(`https://colab-test.onrender.com/search_restaurant?name=${searchedRestaurant}&location=${searchLocation}`, {
           method: "GET",
@@ -22,6 +26,7 @@ export const SearchRestaurant = () => {
             'Content-Type': "application/json",
           }
         });
+        // throw error if response is not ok
         if (!response.ok) {
           throw new Error('Failed to fetch data', response);
         }
@@ -34,7 +39,7 @@ export const SearchRestaurant = () => {
     }
     }
     fetchRestaurants();
-    }, [searchedRestaurant, searchLocation]);
+    }, [searchedRestaurant]);
 
 
     // function to set the searched restaurant

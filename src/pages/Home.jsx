@@ -5,7 +5,7 @@ import { useRestaurant } from '../context/RestaurantContext'
 import { useLocation } from '../context/LocationContext'
 
 export const Home = () => {
-  const { logout, userDetails, isLoggedIn } = useAuth();
+  const { userDetails, isLoggedIn } = useAuth();
   const { searchLocation, setSearchLocation } = useLocation();
   const { fetchFriendReviewedRestaurants, fetchRestaurantsByCuisine, fetchRestaurantsByFriendRating } = useRestaurant();
   const [cuisine, setCuisine] = useState(null); //state to store selected cuisine
@@ -47,10 +47,6 @@ export const Home = () => {
       fetchRestaurantsByFriendRating(rating);
     }
   }, [rating]);
-
-  const handleLogout = () => {
-    logout();
-  }
 
   //function to pass searched location to the LocationContext
   const handleSearch = (searchedLocation) => {

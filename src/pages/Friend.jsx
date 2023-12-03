@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export const Friend = () => {
   const { clearSearchbar } = useLocation();
   const { accessToken, setInRegistrationFlow, inRegistrationFlow} = useAuth();
-  const { fetchFriends, fetchFriendDetails, setFriends, friend, setFriend } = useFriends();
+  const { fetchFriends, fetchFriendDetails, friend, setFriend } = useFriends();
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
 

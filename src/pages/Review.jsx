@@ -33,7 +33,7 @@ export const Review = () => {
   useEffect(() => {
     fetchRestaurantById(id);
   }, [id])
-
+  // if the restaurant is not available, show loading
   if (!restaurant) {
     return <p>Loading...</p>;
   }
