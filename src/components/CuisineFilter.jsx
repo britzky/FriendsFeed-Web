@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
+import { useLocation } from '../context/LocationContext';
 import { FaChevronDown, FaTimes } from 'react-icons/fa';
 
 
@@ -44,7 +45,8 @@ export const CuisineFilter = ({ onSelectCuisine }) => {
 
   const handleSelectCuisine = (cuisine) => {
     onSelectCuisine(cuisine.yelp_alias);
-    onClose();
+    setInput('');
+    toggleModal();
   }
 
   const toggleModal = () => {
@@ -83,9 +85,8 @@ export const CuisineFilter = ({ onSelectCuisine }) => {
                 key={index}
                 onClick={() => {
                   handleSelectCuisine(cuisine);
-                  setInput('')
-                  toggleModal()
                 }}
+                className="py-2 px-2 hover:bg-gray-100 cursor-pointer"
                 >
                   {cuisine.name}
                 </p>
