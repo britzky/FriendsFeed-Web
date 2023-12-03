@@ -61,8 +61,8 @@ export const CuisineFilter = ({ onSelectCuisine }) => {
       </button>
       {showModal && (
       <>
-        <div className="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex">
-          <div className="relative p-8 bg-white w-full max-w-md m-auto flex-col flex rounded-lg">
+        <div className="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex w-screen h-screen !m-0">
+          <div className="relative p-8 bg-white w-full md:max-w-md my-auto flex-col flex rounded-lg mx-4 md:mx-auto">
             <div className="flex items-center border-2 border-secondaryGreen rounded-md overflow-hidden max-w-md bg-gray-100">
               <div className="flex items-center pl-3">
                 <FaSearch className="text-secondaryGreen" />
