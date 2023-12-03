@@ -19,7 +19,7 @@ export const RestaurantList = () => {
         fetchAvatars(restaurant.id, accessToken);
       })
     }
-  }, [restaurants, friends, reviews]);
+  }, [restaurants, friends, reviews, avatars]);
 
   return (
     <div className="w-full">

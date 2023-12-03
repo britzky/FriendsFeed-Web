@@ -15,6 +15,7 @@ export const Navbar = () => {
                     <Link to="/home"><PiHouseLineLight  className="text-3xl" /></Link>
                     <Link to="/friend"><AiOutlineUsergroupAdd className="text-3xl" /></Link>
                     <Link to="/search"><IoRestaurantOutline  className="text-3xl" /></Link>
+                    <button onClick={() => logout()}>logout</button>
                 </div>
             </div>
         </nav>
