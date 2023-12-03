@@ -38,6 +38,10 @@ export const Review = () => {
     }
   }, [reviewPosted]);
 
+  if (!restaurant) {
+    return <p>Loading...</p>;
+  }
+  
   return (
     <div className="flex h-screen w-full justify-center items-center">
       <div className="mx-4 md:mx-0">

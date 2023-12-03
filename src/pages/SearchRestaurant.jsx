@@ -13,6 +13,7 @@ export const SearchRestaurant = () => {
 
   useEffect(() => {
     const fetchRestaurants = async () => {
+    if (searchedRestaurant.trim()) {
       try {
         const response = await fetch(`https://colab-test.onrender.com/search_restaurant?name=${searchedRestaurant}&location=${searchLocation}`, {
           method: "GET",
@@ -31,6 +32,7 @@ export const SearchRestaurant = () => {
         console.error("There was a problem fetching restaurant details: ", error);
       }
     }
+    }
     fetchRestaurants();
     }, [searchedRestaurant, searchLocation]);
 
@@ -41,23 +43,26 @@ export const SearchRestaurant = () => {
     }
 
   return (
-    <div>
-      <div>
-        <Searchbar
-          onSearch={handleSearchRestaurant}
-          placeholder="Search Restaurant"
-        />
-      </div>
-      <div>
-        {restaurants && restaurants.map((restaurant) => (
-          <RestaurantCard
-            key={restaurant.id}
-            name={restaurant.name}
-            image={restaurant.image_url}
-            address={restaurant.location.display_address.join(', ')}
-            onReviewClick={() => navigate(`/review/${restaurant.id}`)}
+    <div className="flex justify-center min-h-screen w-full mt-14">
+      <div className="flex flex-col w-full px-4 md:max-w-lg mx-auto">
+        <div className="w-full">
+          <Searchbar
+            onSearch={handleSearchRestaurant}
+            placeholder="Search Restaurant"
           />
-        ))}
+        </div>
+        <div className="mt-7">
+          {restaurants.length === 0 && <p className="italic mt-7">Restaurants you want to review will appear here</p>}
+          {restaurants.length > 0 && restaurants.map((restaurant) => (
+            <RestaurantCard
+              key={restaurant.id}
+              name={restaurant.name}
+              image={restaurant.image_url}
+              address={restaurant.location.display_address.join(', ')}
+              onReviewClick={restaurant && (() => navigate(`/review/${restaurant.id}`))}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )

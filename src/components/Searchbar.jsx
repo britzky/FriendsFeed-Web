@@ -27,7 +27,7 @@ export const Searchbar = ({ onSearch, placeholder }) => {
   };
 
   return (
-    <div className="flex items-center border-2 border-secondaryGreen rounded-md overflow-hidden max-w-md bg-gray-100">
+    <div className="flex items-center border-2 border-secondaryGreen rounded-md overflow-hidden bg-gray-100">
       <div className="pl-3">
         <FaSearch className="text-secondaryGreen" />
       </div>
