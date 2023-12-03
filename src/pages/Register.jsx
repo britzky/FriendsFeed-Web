@@ -5,12 +5,8 @@ import { useNavigate } from 'react-router-dom';
 export const Register = () => {
   const [error, setError] = useState(null);
   const [input, setInput] = useState({ username: '', password: '', email: '', location: '' });
-  const { formData, updateFormData, setInRegistrationFlow } = useAuth();
+  const { formData, updateFormData } = useAuth();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setInRegistrationFlow(true);
-  }, [])
 
   const handleInputChange = (name, value) => {
     setInput(input => ({ ...input, [name]: value }));

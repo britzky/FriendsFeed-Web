@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { loginUser, loading } = useAuth();
+  const { loginUser, loading, setInRegistrationFlow } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -26,6 +26,7 @@ export const Login = () => {
 
     try {
       await loginUser(username, password);
+      setInRegistrationFlow(false);
       navigate('/home');
     } catch (error) {
       setError("Failed to login. Please check your credentials");
