@@ -1,11 +1,11 @@
-import Avocado from './avocado.png';
-import Bread from './bread.png';
-import Broccoli from './broccoli.png';
-import Coffee from './coffee.png';
-import Cupcake from './cupcake.png';
-import Hamburger from './hamburger.png';
-import Ramen from './ramen.png';
-import Taco from './taco.png';
+import Avocado from './Avocado.png';
+import Bread from './Bread.png';
+import Broccoli from './Broccoli.png';
+import Coffee from './Coffee.png';
+import Cupcake from './Cupcake.png';
+import Hamburger from './Hamburger.png';
+import Ramen from './Ramen.png';
+import Taco from './Taco.png';
 
 export const avatars = {
     Avocado,
