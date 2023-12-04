@@ -42,7 +42,7 @@ export const Review = () => {
     <div className="flex h-screen w-full justify-center items-center">
       <div className="mx-4 md:mx-0">
         <div>
-          <p className="text-2xl text-bold mb-3">{restaurant.name}</p>
+          <p className="text-2xl font-bold mb-3">{restaurant.name}</p>
         </div>
         <div>
           <StarRatings
@@ -58,7 +58,7 @@ export const Review = () => {
         <div className="my-5 text-center">
           <p className="mt-12">Share some deatils of your experience. Consider food, ambience and service.</p>
           <textarea
-            className="w-full h-48 border-2 border-gray-200 rounded-md p-2 my-10"
+            className="w-full h-48 border-2 border-primaryGreen rounded-md p-2 my-10"
             placeholder="Write a review..."
             onChange={(e) => handleCommentChange(e.target.value)}
           />

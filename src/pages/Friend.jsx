@@ -81,7 +81,7 @@ export const Friend = () => {
             <p className="text-center font-bold mt-3" onClick={navigateToHome}>Skip for now</p>
           </div>
         )}
-    </div>
+      </div>
     </div>
   )
 }

@@ -176,6 +176,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(false);
         setUserDetails(null);
         setAccessToken(null);
+        
     };
 
     useEffect(() => {

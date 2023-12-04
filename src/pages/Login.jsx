@@ -18,6 +18,7 @@ export const Login = () => {
 
   // handle login form submission
   const handleSubmit = async (event) => {
+    console.log("Handling login form submission")
     event.preventDefault();
     setError(null);
     if (!username || !password) {
@@ -25,6 +26,7 @@ export const Login = () => {
       return;
     }
     try {
+      console.log("Calling loginUser: ", username, password)
       await loginUser(username, password);
       setInRegistrationFlow(false);
       navigate('/home');
@@ -32,7 +34,7 @@ export const Login = () => {
       setError("Failed to login. Please check your credentials");
     }
   }
-  
+
   return (
     <div className="flex justify-center h-screen w-full mt-14">
       <div className="flex-col justify-center items-center max-w-md">
@@ -65,7 +67,7 @@ export const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10"
+              className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10 mx-2 md:mx-0"
             >
               Login
             </button>

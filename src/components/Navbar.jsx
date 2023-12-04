@@ -4,10 +4,12 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { PiHouseLineLight } from "react-icons/pi";
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
   const { logout } = useAuth();
-  
+  const navigate = useNavigate();
+
   return  (
     <header className="z-50 bg-white fixed top-0 w-full shadow-md">
         <nav className="container mx-auto px-6 py-3">
@@ -16,7 +18,6 @@ export const Navbar = () => {
                     <Link to="/home"><PiHouseLineLight  className="text-3xl" /></Link>
                     <Link to="/friend"><AiOutlineUsergroupAdd className="text-3xl" /></Link>
                     <Link to="/search"><IoRestaurantOutline  className="text-3xl" /></Link>
-                    <button onClick={() => logout()}>logout</button>
                 </div>
             </div>
         </nav>

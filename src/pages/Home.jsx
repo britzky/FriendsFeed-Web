@@ -3,9 +3,10 @@ import { Searchbar, RatingsDropdown, CuisineFilter, RestaurantList } from '../co
 import { useAuth } from '../context/AuthContext'
 import { useRestaurant } from '../context/RestaurantContext'
 import { useLocation } from '../context/LocationContext'
+import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
-  const { userDetails, isLoggedIn } = useAuth();
+  const { userDetails, isLoggedIn, logout } = useAuth();
   const { searchLocation, setSearchLocation } = useLocation();
   const { fetchFriendReviewedRestaurants, fetchRestaurantsByCuisine, fetchRestaurantsByFriendRating } = useRestaurant();
   const [cuisine, setCuisine] = useState(null); //state to store selected cuisine
@@ -58,11 +59,18 @@ export const Home = () => {
     setCuisine(selectedCuisine);
   };
 
+  //function to pass selected rating to the ratings dropdown
   const handleRatingSelection = (selectedRating) => {
+    //if the selected rating is null, fetch all restaurants
     if (selectedRating === null) {
       fetchFriendReviewedRestaurants(searchLocation);
     }
     setRating(selectedRating)
+  }
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   }
 
   return (
@@ -82,6 +90,7 @@ export const Home = () => {
       <div className="overflow-auto">
         <RestaurantList />
       </div>
+      <button onClick={handleLogout}>logout</button>
       </div>
     </div>
   )
