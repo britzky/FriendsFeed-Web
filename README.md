@@ -2,6 +2,8 @@
 
 Introducing Friends Feed, the ultimate social media app for foodies and culinary enthusiasts! Connect with your friends, family, and favorite food bloggers to discover their favorite dining spots in your area. Whether you're a seasoned food critic or just someone who loves a good meal, Friends Feed is your go-to platform for sharing and discovering the best restaurants around. You can check out the live project [here](https://friendsfeed.netlify.app).
 
+![Portfolio Screenshot](public/Feature_Graphic.png)
+
 ## Key Features:
 - 🍽 **Follow Your Foodie Circle** Stay connected with friends, family, and top food bloggers to see their latest culinary adventures. Discover hidden gems, get real-time updates on what and where to eat.
 - 📍 **Local Recommendations** Explore a curated feed of restaurant recommendations tailored to your location and opinions you trust. Friends Feed makes it easy to find the perfect spot for any occasion, whether it's a cozy brunch spot, a trendy dinner spot, or for late-night cravings.
