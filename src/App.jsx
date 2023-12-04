@@ -1,13 +1,21 @@
+import { useEffect } from 'react';
 import { AllRoutes } from './routes/AllRoutes'
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { FriendProvider } from './context/FriendContext';
 import { ReviewProvider } from './context/ReviewContext';
 import { LocationProvider } from './context/LocationContext';
 import { RestaurantProvider } from './context/RestaurantContext';
 import './App.css'
 
-function App() {
+const WakeUpServer = () => {
+  const { checkServerReadiness } = useAuth();
+  useEffect(() => {
+    checkServerReadiness();
+  }, []);
+  return null;
+}
 
+function App() {
   return (
     <>
     <AuthProvider>
@@ -15,6 +23,7 @@ function App() {
         <ReviewProvider>
           <LocationProvider>
             <RestaurantProvider>
+              <WakeUpServer />
               <AllRoutes />
             </RestaurantProvider>
           </LocationProvider>

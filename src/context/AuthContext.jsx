@@ -176,7 +176,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(false);
         setUserDetails(null);
         setAccessToken(null);
-        
+
     };
 
     useEffect(() => {
@@ -201,7 +201,8 @@ export const AuthProvider = ({ children }) => {
         inRegistrationFlow,
         setInRegistrationFlow,
         formData,
-        updateFormData
+        updateFormData,
+        checkServerReadiness,
     }
 
   return (
