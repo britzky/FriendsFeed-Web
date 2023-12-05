@@ -18,6 +18,7 @@ export const ReviewProvider = ({ children }) => {
 
     // extract the restaurantId from the restaurant object
     const restaurantIds = useMemo(() => restaurants.map(restaurant => restaurant.id), [restaurants]);
+    console.log("These are the restaurantIds: ", restaurantIds);
 
     // fetch all friend-reviews for the restaurant selected
     const fetchReviews = useCallback(async (restaurantId, accessToken) => {
@@ -51,41 +52,37 @@ export const ReviewProvider = ({ children }) => {
         }, [fetchedRestaurants]);
 
         // fetch all friend-avatars for the restaurant selected
-        const fetchAvatars = useCallback(async () => {
+        const fetchAvatars = useCallback(async (restaurantIds) => {
+            console.log("Fetching avatars for restaurantIds: ", restaurantIds)
             if (restaurantIds.length === 0) {
                 return;
             }
-            restaurantIds.forEach(async (restaurantId) => {
-                if (fetchedRestaurants.has(restaurantId)) {
-                    return;
-                }
-                    try {
-                        const response = await fetch(
-                            `https://colab-test.onrender.com/restaurants/${restaurantId}/friend-avatars`,
-                            {
-                                method: "GET",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                    Authorization: `Bearer ${accessToken}`,
-                                },
-                            }
-                        );
-                        if (response.ok) {
-                            const data = await response.json();
-                            setAvatars(prevAvatars => ({
-                                ...prevAvatars,
-                                [restaurantId]: data // Replace existing avatars with new data
-                            }));
-                            setFetchedRestaurants(prev => new Set(prev.add(restaurantId)));
-                        } else {
-                            console.log("Error fetching avatars:", response.status, await response.text());
-                        }
-
-                    } catch (error) {
-                        console.log(error);
+            try {
+                const queryString = restaurantIds.map(id => `restaurant_ids=${encodeURIComponent(id)}`).join('&');
+                const response = await fetch(
+                    `https://colab-test.onrender.com/restaurants/friend-avatars?${queryString}`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${accessToken}`,
+                        },
                     }
+                );
+                if (response.ok) {
+                    const data = await response.json();
+                    setAvatars(prevAvatars => ({
+                        ...prevAvatars,
+                        ...data //
+                    }));
+                    setFetchedRestaurants(new Set([...Array.from(fetchedRestaurants), ...restaurantIds]));
+                } else {
+                    console.log("Error fetching avatars:", response.status, await response.text());
                 }
-            );
+
+            } catch (error) {
+                console.log(error);
+            }
         }, [fetchedRestaurants, restaurantIds]);
 
         const postReview = useCallback(async (restaurantId, rating, comment, accessToken) => {
@@ -125,7 +122,7 @@ export const ReviewProvider = ({ children }) => {
         // function to rerun the fetchAvatars function when restaurantIds change
         const refreshAvatars = useCallback(() => {
             setFetchedRestaurants(new Set());
-            fetchAvatars();
+            fetchAvatars(restaurantIds);
         }, [fetchAvatars]);
 
 
