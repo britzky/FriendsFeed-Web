@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext, useCallback } from 'react';
 import { useAuth } from './AuthContext';
+import { useReview } from './ReviewContext';
+import { useRestaurant } from './RestaurantContext';
 
 
 export const FriendContext = createContext();
@@ -12,6 +14,8 @@ export const FriendProvider = ({ children }) => {
     const [friends, setFriends] = useState([]); // used for friendlist
     const [friend, setFriend] = useState(null); // used for friend details
     const { accessToken } = useAuth();
+    const { refreshAvatars } = useReview();
+    const { fetchFriendReviewedRestaurants } = useRestaurant();
 
     const fetchFriendDetails = useCallback(async (username) => {
         try {
@@ -30,7 +34,6 @@ export const FriendProvider = ({ children }) => {
                 }
                 const data = await response.json();
                 setFriend(data)
-                console.log("Fetched friend details: ", data)
         } catch (error) {
             console.error('There was a problem fetching friend details:', error);
         }
@@ -67,7 +70,6 @@ export const FriendProvider = ({ children }) => {
                 },
                 body: JSON.stringify({ friend_username: username }),
             })
-            console.log("Following friend request body:", JSON.stringify({ friend_username: username }));
 
             const data = await response.json();
 
@@ -77,6 +79,8 @@ export const FriendProvider = ({ children }) => {
             }
 
             await fetchFriends(accessToken);
+            await fetchFriendReviewedRestaurants();
+            await refreshAvatars();
         } catch (error) {
             console.error('Error following friend:', error);
         }
@@ -101,6 +105,8 @@ export const FriendProvider = ({ children }) => {
             }
 
             await fetchFriends(accessToken);
+            await fetchFriendReviewedRestaurants();
+            await refreshAvatars();
         } catch (error) {
             console.error('Error unfollowing friend:', error);
         }

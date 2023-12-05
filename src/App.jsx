@@ -19,16 +19,16 @@ function App() {
   return (
     <>
     <AuthProvider>
-      <FriendProvider>
-        <ReviewProvider>
-          <LocationProvider>
-            <RestaurantProvider>
+      <LocationProvider>
+        <RestaurantProvider>
+          <ReviewProvider>
+            <FriendProvider>
               <WakeUpServer />
               <AllRoutes />
-            </RestaurantProvider>
-          </LocationProvider>
-        </ReviewProvider>
-      </FriendProvider>
+            </FriendProvider>
+          </ReviewProvider>
+        </RestaurantProvider>
+      </LocationProvider>
     </AuthProvider>
     </>
   )

@@ -3,18 +3,19 @@ import { Searchbar, RatingsDropdown, CuisineFilter, RestaurantList } from '../co
 import { useAuth } from '../context/AuthContext'
 import { useRestaurant } from '../context/RestaurantContext'
 import { useLocation } from '../context/LocationContext'
+import { useReview } from '../context/ReviewContext'
 import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
   const { userDetails, isLoggedIn, logout } = useAuth();
   const { searchLocation, setSearchLocation } = useLocation();
+  const { refreshAvatars } = useReview();
   const { fetchFriendReviewedRestaurants, fetchRestaurantsByCuisine, fetchRestaurantsByFriendRating } = useRestaurant();
   const [cuisine, setCuisine] = useState(null); //state to store selected cuisine
   const [rating, setRating] = useState(null)
 
   // Set the location to the user's location set when registering by default
   useEffect(() => {
-    console.log('Effect triggered: ', { userDetails, isLoggedIn, searchLocation });
     if(userDetails && isLoggedIn && !searchLocation){
       setSearchLocation(userDetails.location);
     }
@@ -24,14 +25,16 @@ export const Home = () => {
   useEffect(() => {
     if (userDetails && isLoggedIn) {
       setSearchLocation(userDetails.location);
-      fetchFriendReviewedRestaurants(userDetails.location);
+      fetchFriendReviewedRestaurants();
+      refreshAvatars();
     }
   }, [userDetails, isLoggedIn]); // Depend on userDetails and isLoggedIn for the initial fetch
 
   // Subsequent fetches when searchLocation changes
   useEffect(() => {
     if (searchLocation && (userDetails.location !== searchLocation)) {
-      fetchFriendReviewedRestaurants(searchLocation);
+      fetchFriendReviewedRestaurants();
+      refreshAvatars();
     }
   }, [searchLocation])
 
@@ -64,6 +67,7 @@ export const Home = () => {
     //if the selected rating is null, fetch all restaurants
     if (selectedRating === null) {
       fetchFriendReviewedRestaurants(searchLocation);
+      refreshAvatars();
     }
     setRating(selectedRating)
   }

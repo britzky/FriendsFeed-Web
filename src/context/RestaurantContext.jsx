@@ -1,5 +1,6 @@
 import React, { useState, useContext, createContext, useCallback } from 'react'
 import { useAuth } from './AuthContext'
+import { useLocation } from './LocationContext'
 
 const RestaurantContext = createContext()
 
@@ -14,12 +15,13 @@ export const RestaurantProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [updateRestaurants, setUpdateRestaurants] = useState(false); // Added this state to update the restaurants list after a review is posted
     const { accessToken } = useAuth();
+    const { searchLocation } = useLocation();
 
-    const fetchFriendReviewedRestaurants = useCallback(async (location) => {
+    const fetchFriendReviewedRestaurants = useCallback(async () => {
         try {
             setLoading(true);
             setRestaurants([]);
-            const response = await fetch(`https://colab-test.onrender.com/restaurants/friend-reviewed?location=${location}`, {
+            const response = await fetch(`https://colab-test.onrender.com/restaurants/friend-reviewed?location=${searchLocation}`, {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -41,12 +43,12 @@ export const RestaurantProvider = ({ children }) => {
         }
     }, [accessToken]);
 
-    const fetchRestaurantsByCuisine = async (location, cuisine) => {
-        console.log('Attempting to Fetch restaurants with specific cuisine for location: ', location, cuisine)
+    const fetchRestaurantsByCuisine = async (cuisine) => {
+        console.log('Attempting to Fetch restaurants with specific cuisine for location: ', searchLocation, cuisine)
         try {
             setLoading(true);
             setRestaurants([]);
-            const response = await fetch(`https://colab-test.onrender.com/restaurants-cuisine?location=${location}&cuisine=${cuisine}`, {
+            const response = await fetch(`https://colab-test.onrender.com/restaurants-cuisine?location=${searchLocation}&cuisine=${cuisine}`, {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,

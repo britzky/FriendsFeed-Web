@@ -7,19 +7,15 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export const RestaurantList = () => {
-  const { avatars, fetchAvatars, reviews } = useReview();
+  const { avatars, reviews, refreshAvatars } = useReview();
   const { restaurants } = useRestaurant();
   const { friends } = useFriends();
   const { accessToken } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (restaurants && Array.isArray(restaurants)) {
-      restaurants.forEach((restaurant) => {
-        fetchAvatars(restaurant.id, accessToken);
-      })
-    }
-  }, [restaurants, friends, reviews, avatars]);
+    refreshAvatars();
+  }, [restaurants, friends, reviews]);
 
   return (
     <div className="w-full">

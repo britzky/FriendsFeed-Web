@@ -10,13 +10,12 @@ export const Restaurant = () => {
   const { accessToken } = useAuth();
   const { id } = useParams();
   const { fetchRestaurantById, restaurant } = useRestaurant();
-  const { fetchReviews, fetchAvatars, avatars } = useReview();
+  const { fetchReviews, avatars } = useReview();
   const navigate = useNavigate();
 
   // fetch reviews and avatars when accessToken changes
   useEffect(() => {
     fetchReviews(id, accessToken);
-    fetchAvatars(id, accessToken);
   }, [accessToken]);
 
   // fetch individual restaurant when id changes

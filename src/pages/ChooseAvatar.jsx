@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { CiLock } from "react-icons/ci";
 
 export const ChooseAvatar = () => {
-  const { formData, updateFormData, registerUser, setUserDetails, setAccessToken } = useAuth();
+  const { formData, registerUser } = useAuth();
   const navigate = useNavigate();
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [loading, setLoading] = useState(false);

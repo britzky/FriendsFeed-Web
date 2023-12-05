@@ -4,11 +4,8 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { PiHouseLineLight } from "react-icons/pi";
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
 
   return  (
     <header className="z-50 bg-white fixed top-0 w-full shadow-md">
