@@ -3,6 +3,7 @@ import { avatars } from '../assets/avatars';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { CiLock } from "react-icons/ci";
+import { BallTriangle, Circles, InfinitySpin, Watch } from 'react-loader-spinner';
 
 export const ChooseAvatar = () => {
   const { formData, registerUser } = useAuth();
@@ -110,7 +111,18 @@ export const ChooseAvatar = () => {
             onClick={handleCompleteRegistration}
             disabled={loading}
           >
-            Continue
+            {loading ? (
+              <div
+                className="flex items-center justify-center"
+              >
+                <Watch
+                  color="white"
+                  height={30}
+                />
+              </div>
+            ) : (
+              "Continue"
+            )}
           </button>
         </div>
       </div>
