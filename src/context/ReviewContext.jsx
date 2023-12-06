@@ -59,8 +59,9 @@ export const ReviewProvider = ({ children }) => {
             }
             try {
                 const queryString = restaurantIds.map(id => `restaurant_ids=${encodeURIComponent(id)}`).join('&');
-                const response = await fetch(
-                    `https://colab-test.onrender.com/restaurants/friend-avatars?${queryString}`,
+                const url = `https://colab-test.onrender.com/restaurants/friend-avatars?${queryString}`
+                console.log("Fetching avatars from URL: ", url)
+                const response = await fetch(url,
                     {
                         method: "GET",
                         headers: {
