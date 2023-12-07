@@ -81,6 +81,11 @@ export const Home = () => {
     <div className="flex justify-center min-h-screen w-full mt-14">
       <div className="flex flex-col w-full px-4 md:max-w-lg mx-auto">
         <div>
+          <h1 className="text-4xl font-luckiest text-center text-primaryGreen mb-12">
+            Friend Reviewed Restaurants
+          </h1>
+        </div>
+        <div>
           <Searchbar
             placeholder="Search Location (ex. Brooklyn, NY)"
             onSearch={handleSearch}

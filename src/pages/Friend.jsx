@@ -44,17 +44,20 @@ export const Friend = () => {
   }
 
   return (
-    <div className="flex justify-center h-screen mt-28 mx-4 md:mx-0">
+    <div className="flex justify-center h-screen mt-14 mx-4 md:mx-0">
       <div className="flex flex-col items-center w-full max-w-md space-y-5">
       {inRegistrationFlow && ( // only show the header if we are in the registration flow
           <>
-            <h1 className="text-5xl my-3 font-luckiest text-center text-darkGreen">Friends Feed</h1>
+            <h1 className="text-4xl my-3 font-luckiest text-center text-primaryGreen">Friends Feed</h1>
             <p className="text-center">
               Add friends so you can start seeing reviews right away.
               This is what makes Friends Feed so great!
             </p>
           </>
         )}
+        <div>
+          <h1 className="text-4xl my-3 font-luckiest text-center text-primaryGreen">Find Friends</h1>
+        </div>
         <div className="w-full">
           <Searchbar onSearch={handleSearch} placeholder="Search @Username" />
         </div>

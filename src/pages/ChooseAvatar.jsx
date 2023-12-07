@@ -52,7 +52,7 @@ export const ChooseAvatar = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="flex flex-col items-center w-full max-w-md">
-      <h1 className="text-5xl font-luckiest text-center text-darkGreen">Friends Feed</h1>
+      <h1 className="text-4xl font-luckiest text-center text-primaryGreen">Friends Feed</h1>
       <p className="text-center my-7">Pick an avatar for your Friends Feed profile.</p>
       <div className="flex gap-5 flex-wrap w-80">
         {Object.keys(avatars).map((key) => (

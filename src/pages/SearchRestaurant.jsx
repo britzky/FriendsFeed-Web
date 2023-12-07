@@ -50,6 +50,7 @@ export const SearchRestaurant = () => {
   return (
     <div className="flex justify-center min-h-screen w-full mt-14">
       <div className="flex flex-col w-full px-4 md:max-w-lg mx-auto">
+        <h1 className="text-4xl my-3 font-luckiest text-center text-primaryGreen">Search for Restaurants to review</h1>
         <div className="w-full">
           <Searchbar
             onSearch={handleSearchRestaurant}

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export const Register = () => {
   const [error, setError] = useState(null);
   const [input, setInput] = useState({ username: '', password: '', email: '', location: '' });
+  const [phone, setPhone] = useState({ phone: '' })
   const { formData, updateFormData } = useAuth();
   const navigate = useNavigate();
 
@@ -12,6 +13,10 @@ export const Register = () => {
     setInput(input => ({ ...input, [name]: value }));
     updateFormData({ [name]: value });
   };
+
+  const handlePhoneChange = (name, value) => {
+    setPhone(phone => ({ ...phone, [name]: value }));
+  }
 
   const handleRegistration = () => {
     // Perform validation here and set errors if necessary
@@ -41,7 +46,7 @@ export const Register = () => {
   return (
     <div className="flex items-center justify-center h-screen mx-4 md:mx-0">
       <div className="flex flex-col items-center w-full max-w-md">
-          <h1 className="text-5xl font-luckiest text-center text-darkGreen">Friends Feed</h1>
+          <h1 className="text-4xl font-luckiest text-center text-primaryGreen">Friends Feed</h1>
           <h2 className="text-xl my-2 text-center">Discover new restaurants one friend at a time.</h2>
           <input
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-full"
@@ -51,7 +56,7 @@ export const Register = () => {
             placeholder="Username"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
-          <p className="m-2">This is how you'll appear to your friends on Friends Feed.</p>
+          <p className="m-2 text-left w-full">This is how you'll appear to your friends on Friends Feed.</p>
           {error && error.username && <p className="text-red-500">{error.username}</p>}
           <input
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-full"
@@ -61,7 +66,7 @@ export const Register = () => {
             placeholder="Password"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
-          <p className="m-2">Password must include: 6 to 20 characters</p>
+            <p className="m-2 text-left w-full">Password must include: 6 to 20 characters</p>
           {error && error.password && <p className="text-red-500">{error.password}</p>}
           <input
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-full"
@@ -73,6 +78,14 @@ export const Register = () => {
           />
           {error && error.email && <p className="text-red-500">{error.email}</p>}
           <input
+            className="border-2 border-primaryGreen rounded-md p-2 m-2 w-full"
+            type="phone"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number"
+            onChange={(e) => handlePhoneChange(e.target.name, e.target.value)}
+            />
+          <input
             type="text"
             className="border-2 border-primaryGreen rounded-md p-2 m-2 w-full"
             name="location"
@@ -80,7 +93,7 @@ export const Register = () => {
             placeholder="Location"
             onChange={(e) => handleInputChange(e.target.name, e.target.value)}
           />
-          <p className="text-center">Enter your city and state so we can start showing you recommendations nearby.</p>
+          <p className="text-left">Enter your city and state so we can start showing you recommendations nearby.</p>
           {error && error.location && <p className="text-red-500">{error.location}</p>}
           <button
             className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10 w-full"
