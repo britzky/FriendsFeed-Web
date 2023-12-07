@@ -81,8 +81,8 @@ export const Home = () => {
   return (
     <div className="flex justify-center min-h-screen w-full mt-14">
       <div className="flex flex-col w-full px-4 md:max-w-md mx-auto">
-        <div>
-          <h1 className="text-4xl font-luckiest text-center text-primaryGreen mb-12">
+        <div className="w-full">
+          <h1 className="text-4xl font-luckiest text-left text-primaryGreen mb-12">
             Friend's Reviews
           </h1>
         </div>
