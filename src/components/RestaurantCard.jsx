@@ -20,11 +20,11 @@ export const RestaurantCard = ({ onClick, onReviewClick, name, image, cuisine, r
                 key={index}
                 src={avatars[avatar]}
                 alt={avatar}
-                className="w-10 h-10 rounded-full object-cover"
+                className="w-8 h-8 rounded-full object-cover"
               />
             ))}
           </div>
-          <p className="ml-3 italic">Friends overall rating</p>
+          <p className="ml-1 italic">Friends overall rating</p>
         </div>
         )}
         {rating && (

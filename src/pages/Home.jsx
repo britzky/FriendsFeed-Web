@@ -13,6 +13,7 @@ export const Home = () => {
   const { fetchFriendReviewedRestaurants, fetchRestaurantsByCuisine, fetchRestaurantsByFriendRating } = useRestaurant();
   const [cuisine, setCuisine] = useState(null); //state to store selected cuisine
   const [rating, setRating] = useState(null)
+  const navigate = useNavigate();
 
   // Set the location to the user's location set when registering by default
   useEffect(() => {
@@ -79,10 +80,10 @@ export const Home = () => {
 
   return (
     <div className="flex justify-center min-h-screen w-full mt-14">
-      <div className="flex flex-col w-full px-4 md:max-w-lg mx-auto">
+      <div className="flex flex-col w-full px-4 md:max-w-md mx-auto">
         <div>
           <h1 className="text-4xl font-luckiest text-center text-primaryGreen mb-12">
-            Friend Reviewed Restaurants
+            Friend's Reviews
           </h1>
         </div>
         <div>

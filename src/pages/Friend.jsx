@@ -59,7 +59,7 @@ export const Friend = () => {
           <h1 className="text-4xl my-3 font-luckiest text-center text-primaryGreen">Find Friends</h1>
         </div>
         <div className="w-full">
-          <Searchbar onSearch={handleSearch} placeholder="Search @Username" />
+          <Searchbar onSearch={handleSearch} placeholder="Search @Username or phone number" />
         </div>
         {friend &&
           <FriendCard
