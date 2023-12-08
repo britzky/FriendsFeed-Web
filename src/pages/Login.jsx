@@ -18,7 +18,6 @@ export const Login = () => {
 
   // handle login form submission
   const handleSubmit = async (event) => {
-    console.log("Handling login form submission")
     event.preventDefault();
     setError(null);
     if (!username || !password) {
@@ -26,12 +25,14 @@ export const Login = () => {
       return;
     }
     try {
+      setUsername('');
+      setPassword('');
       console.log("Calling loginUser: ", username, password)
       await loginUser(username, password);
       setInRegistrationFlow(false);
       navigate('/home');
     } catch (error) {
-      setError("Failed to login. Please check your credentials");
+      setError(error.message);
     }
   }
 
@@ -64,10 +65,11 @@ export const Login = () => {
               onChange={(e) => handleChange(e, 'password')}
               className="border-2 border-primaryGreen rounded-md p-2 m-2"
             />
+              {error && <div className="text-red-500 text-center mb-3">{error}</div>}
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mt-10 mx-2 md:mx-0"
+              className="px-4 py-2 bg-primaryGreen text-white rounded-md hover:bg-secondaryGreen mx-2 md:mx-0"
             >
               Login
             </button>
