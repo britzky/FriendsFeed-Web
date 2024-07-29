@@ -27,6 +27,9 @@ export const Register = () => {
     if (!formData.password) {
       validationErrors.password = "Password is required";
     }
+    if (formData.password.length < 6) {
+      validationErrors.password = "Password must include 6 to 20 characters"
+    }
     if (!formData.email) {
       validationErrors.email = "email is required";
     }
